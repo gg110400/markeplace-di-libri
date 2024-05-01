@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista dei preferiti</title>
+    <!--Collegamento con style di bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!--Collegamento con il mio foglio di stile-->
+    <link rel="stylesheet" href="style.css" />
+    <!--Icone di bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!--Inserisco favicon-->
+    <link rel="icon" type="image/png" href="assets/gks1jr7m.png" />
+    <style>
+      .card.index {
+        display: none !important;
+      }
+
+      .cardBook {
+        width: 240px;
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition:scale 0.7s ease-in;
+      }
+
+      .book-title {
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .more-margin {
+        margin-bottom: 480px;
+      }
+
+      .card-img-top {
+        height: 350px;
+        width: 230px;
+      }
+
+      .cardBook:hover {
+        transform: scale(1.1);
+      }
+
+      .cardBook:hover .card-img-top {
+        box-shadow: 10px 10px 10px 5px gray;
+      }
+
+      .bg-green {
+        height:50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Creo NAV1 superiore-->
+    <nav class="d-flex justify-content-between bg-green">
+      <div>
+        <ul class="d-flex list-unstyled gap-5 ms-5 mt-3">
+          <li class="fw-semibold">SHOP</li>
+          <li class="fw-semibold">MAGAZINE</li>
+          <li class="fw-semibold">COMMUNITY</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="d-flex list-unstyled gap-3 me-5 mt-3">
+          <li>Gift card</li>
+          <li>Negozi</li>
+          <li>Punti di ritiro</li>
+          <li>Eventi</li>
+          <li><div class="divider"></div></li>
+          <li>Assistenza clienti</li>
+        </ul>
+      </div>
+    </nav>
+    <!--Creo nav2 con barra di ricerca-->
+    <div class="container mt-2">
+      <nav class="d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <a href="index.html"
+            ><img
+              src="https://www.logolynx.com/images/logolynx/9a/9ae8af23bbd1ab1cb3647da09c4f7465.jpeg"
+              alt="immagine del logo"
+          /></a>
+        </div>
+        <div class="barra-ricerca">
+          <input
+            type="text"
+            id="search-bar"
+            placeholder="Cerca tra tanti prodotti"
+          />
+          <button type="button" id="search-button">
+            <i class="fa-solid fa-magnifying-glass fs-5"></i>
+          </button>
+        </div>
+        <div class="icons-options">
+          <ul class="d-flex list-unstyled gap-5">
+            <li>
+              <a class="text-dark" href="preferiti.html"
+                ><i class="fa-regular fa-heart fs-3"></i
+              ></a>
+            </li>
+            <li>
+              <a href="cart.html" class="text-dark"
+                ><i class="fa-solid fa-cart-shopping fs-3"></i
+              ></a>
+            </li>
+            <li><i class="fa-regular fa-user fs-3"></i></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!--Titolo sezione-->
+    <div class="container mb-2">
+      <div class="row mt-3">
+        <div class="col text-center">
+          <h2>I tuoi prodotti preferiti</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5" id="savedCardsContainer"></div>
+
+    <!--Collegamento con lo script di bootstrap-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!--Collegamento con fontawesome-->
+    <script
+      src="https://kit.fontawesome.com/acd96ea700.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--script js-->
+    <script src="script.js"></script>
+    <!--preferiti.js-->
+    <script>
+      titleSection.classList.add("d-none");
+      console.log(savedCards);
+      // Seleziona il container in cui verranno inserite le nuove card
+      let savedCardsContainer = document.getElementById("savedCardsContainer");
+
+      // Numero massimo di card per riga
+      const cardsPerRow = 4;
+
+      // Itera attraverso gli elementi di savedCards
+      savedCards.forEach(function (savedCard, index) {
+        // Se l'indice è multiplo di cardsPerRow, crea una nuova riga
+        if (index % cardsPerRow === 0) {
+          let newRow = document.createElement("div");
+          newRow.classList.add("row");
+          newRow.classList.add("more-margin"); // Aggiungi margine inferiore per separare le righe
+          savedCardsContainer.appendChild(newRow);
+        }
+
+        // Seleziona l'ultima riga aggiunta
+        let rows = savedCardsContainer.querySelectorAll(".row");
+        let lastRow = rows[rows.length - 1];
+
+        // Crea una nuova colonna per la card
+        let col = document.createElement("div");
+        col.classList.add("col-md-3"); // Usa la classe di Bootstrap per le colonne
+        col.classList.add("mb-4"); // Aggiungi margine inferiore per separare le colonne
+        lastRow.appendChild(col);
+
+        // Crea una nuova card
+        let card = document.createElement("div");
+        card.classList.add("cardBook");
+        card.classList.add("mt-2");
+
+        // Crea un'immagine per il libro
+        let img = document.createElement("img");
+        img.src = savedCard.imgSrc;
+        img.classList.add("card-img-top");
+
+        // Crea un titolo per il libro
+        let title = document.createElement("h4");
+        title.classList.add("book-title");
+        title.innerText = savedCard.titolo;
+        title.classList.add("mt-4");
+
+        // Crea un prezzo per il libro
+        let price = document.createElement("h4");
+        price.classList.add("mt-4");
+        price.classList.add("price");
+        price.innerText = savedCard.price;
+
+        // Aggiungi l'immagine, il titolo e il prezzo alla card
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(price);
+
+        // Aggiungi la card alla colonna
+        col.appendChild(card);
+      });
+
+      console.log(savedCards);
+    </script>
+  </body>
+</html>

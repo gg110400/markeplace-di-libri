@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product details</title>
+    <!--Style di bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!--mio foglio di stile-->
+    <link rel="stylesheet" href="style.css" />
+    <!--Icone bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!--Inserisco favicon-->
+    <link rel="icon" type="image/png" href="assets/gks1jr7m.png" />
+    <style>
+      .divider2 {
+        width: 100%;
+        height: 30px;
+        background-color: #f6ee09;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Creo NAV1 superiore-->
+    <nav class="d-flex justify-content-between bg-green" style="height: 50px">
+      <div>
+        <ul class="d-flex list-unstyled gap-5 ms-5 mt-3">
+          <li class="fw-semibold">SHOP</li>
+          <li class="fw-semibold">MAGAZINE</li>
+          <li class="fw-semibold">COMMUNITY</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="d-flex list-unstyled gap-3 me-5 mt-3">
+          <li>Gift card</li>
+          <li>Negozi</li>
+          <li>Punti di ritiro</li>
+          <li>Eventi</li>
+          <li><div class="divider"></div></li>
+          <li>Assistenza clienti</li>
+        </ul>
+      </div>
+    </nav>
+    <!--Creo nav2 con barra di ricerca-->
+    <div class="container mt-2">
+      <nav class="d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <a href="index.html"
+            ><img
+              src="https://www.logolynx.com/images/logolynx/9a/9ae8af23bbd1ab1cb3647da09c4f7465.jpeg"
+              alt="immagine del logo"
+          /></a>
+        </div>
+        <div class="barra-ricerca">
+          <input
+            type="text"
+            id="search-bar"
+            placeholder="Cerca tra tanti prodotti"
+          />
+          <button type="button" id="search-button">
+            <i class="fa-solid fa-magnifying-glass fs-5"></i>
+          </button>
+        </div>
+        <div class="icons-options position-relative">
+          <ul class="d-flex list-unstyled gap-5">
+            <li><div id="numeroProdottiCarrello">10</div></li>
+            <li>
+              <a class="text-dark" href="preferiti.html"
+                ><i class="fa-regular fa-heart fs-3"></i
+              ></a>
+            </li>
+            <li>
+              <a href="cart.html" class="text-dark"
+                ><i class="fa-solid fa-cart-shopping fs-3"></i
+              ></a>
+            </li>
+            <li><i class="fa-regular fa-user fs-3"></i></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="divider2"></div>
+
+    <button type="button" class="btn mt-2" onclick="window.history.back()">
+      <i class="bi bi-arrow-left fs-3 ms-2"></i>
+    </button>
+
+    <div class="container d-flex gap-5">
+      <div class="immagine d-flex justify-content-center align-items-center">
+        <img
+          src="https://www.inoxbim.com/wp-content/uploads/woocommerce-placeholder-700x700.png"
+          alt="placeholder"
+          class="height-personalized"
+          id="copertina"
+        />
+      </div>
+      <div class="info d-flex flex-column">
+        <div class="titolo mb-3">
+          <h2 id="titolo">Titolo libro</h2>
+          <h4 id="genere" class="mt-4 fw-normal text-secondary">Genere:</h4>
+        </div>
+        <div class="trama mb-3">
+          <p>
+            In the distant future, on a planet far beyond our own galaxy, a
+            young scientist named Lyra discovers a hidden chamber deep within
+            the ruins of an ancient civilization. Inside, she finds a mysterious
+            device that grants her the power to manipulate time itself.As Lyra
+            delves deeper into the secrets of the device, she uncovers a dark
+            conspiracy that threatens not only her world but all of existence.
+            With the help of a ragtag group of rebels and outcasts, she must
+            navigate treacherous landscapes and outsmart powerful enemies to
+            unravel the truth behind the device and save her people from
+            impending doom.
+          </p>
+        </div>
+        <div class="prezzo d-flex gap-5">
+          <div>
+            <h5 id="prezzo">Prezzo: 16 $</h5>
+          </div>
+        </div>
+      </div>
+      <div class="spedizione">
+        <div class="check">
+          <input type="checkbox" class="" /> Si, voglio la consegna gratuita
+        </div>
+        <div
+          class="disponibilità p-1 d-flex flex-column justify-content-center align-items-center"
+        >
+          <h5 class="text-center mt-3 mb-3" id="prezzo2">16 $</h5>
+          <h6 class="fw-normal mt-4">
+            <span style="color: rgb(104, 164, 201)">Consegna</span> entro
+            <strong>lunedì, 10 giugno.</strong>
+            <span style="color: rgb(104, 164, 201)"
+              >Ordina entro 11 ore. Maggiori informazioni.</span
+            >
+          </h6>
+          <h6 class="mt-3">
+            <i class="fa-solid fa-location-dot me-2"></i
+            ><span style="color: rgb(104, 164, 201)"
+              >Consegna a Roma 00145: aggiorna luogo</span
+            >
+          </h6>
+          <h5 class="fw-normal text-center mb-3 mt-2">
+            Disponibilità immediata
+          </h5>
+          <input
+            type="number"
+            placeholder="Quantità: "
+            class="rounded-4 border-0 p-1"
+          />
+          <button
+            type="button"
+            class="btn rounded-4 btn-warning mt-4 addButton"
+          >
+            Aggiungi al carrello
+          </button>
+          <button type="button" class="btn rounded-4 btn-danger mt-3 buyNow">
+            Acquista ora
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--Script di bootstrap-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!--Collegamento con fontawesome-->
+    <script
+      src="https://kit.fontawesome.com/acd96ea700.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--Script relativo a questa pagina-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const parametro = new URLSearchParams(window.location.search);
+        const bookId = parametro.get("bookId");
+        console.log(bookId);
+
+        fetch(`https://striveschool-api.herokuapp.com/books/${bookId}`)
+          .then((response) => response.json())
+          .then((book) => {
+            const bookTitle = book.title;
+            console.log(bookTitle);
+            const bookGenre = book.category;
+            console.log(bookGenre);
+            const bookPrice = book.price;
+            console.log(bookPrice);
+            const bookCover = book.img;
+            console.log(bookCover);
+            let titolo = document.getElementById("titolo");
+            titolo.innerText = bookTitle;
+            let prezzo = document.getElementById("prezzo");
+            prezzo.innerHTML = bookPrice + " $";
+            let prezzo2 = document.getElementById("prezzo2");
+            prezzo2.innerText = bookPrice + " $";
+            let copertina = document.getElementById("copertina");
+            copertina.src = bookCover;
+            let genere = document.getElementById("genere");
+            genere.innerText = "Genere: " + bookGenre;
+          });
+      });
+    </script>
+  </body>
+</html>
