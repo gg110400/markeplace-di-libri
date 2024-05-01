@@ -71,7 +71,6 @@
         </div>
         <div class="icons-options position-relative">
           <ul class="d-flex list-unstyled gap-5">
-            <li><div id="numeroProdottiCarrello">10</div></li>
             <li>
               <a class="text-dark" href="preferiti.html"
                 ><i class="fa-regular fa-heart fs-3"></i
@@ -201,14 +200,19 @@
             let titolo = document.getElementById("titolo");
             titolo.innerText = bookTitle;
             let prezzo = document.getElementById("prezzo");
-            prezzo.innerHTML = bookPrice + " $";
+            prezzo.innerHTML = bookPrice.toFixed(2) + " $";
             let prezzo2 = document.getElementById("prezzo2");
             prezzo2.innerText = bookPrice + " $";
             let copertina = document.getElementById("copertina");
             copertina.src = bookCover;
             let genere = document.getElementById("genere");
             genere.innerText = "Genere: " + bookGenre;
+
+            // Imposta il titolo della pagina
+             document.title = bookTitle;
           });
+
+         
       });
     </script>
   </body>
