@@ -11,7 +11,7 @@ body {
 }
 
 .logo img {
-    width:130px;
+    width:100px;
 }
 
 .icons-options {
@@ -154,4 +154,8 @@ body {
 
 .height-personalized {
     height:520px;
+}
+
+.carousel img {
+    height:560px;
 }

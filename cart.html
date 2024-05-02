@@ -36,7 +36,11 @@
       }
 
       .bg-green {
-        height:50px;
+        height: 50px;
+      }
+
+      .remove {
+        cursor:pointer;
       }
     </style>
   </head>
@@ -176,7 +180,6 @@
             // Aggiungi il prezzo del prodotto corrente all'accumulatore
             return acc + parseFloat(cartItem.price);
           }, 0);
-         
         }
       });
 
@@ -193,7 +196,7 @@
         liDiUlProdotti.innerHTML = `
         <div class="d-flex gap-5">
                   <div class="card">
-                    <img src="${cartItem.imgSrc}"  width="100"/>
+                    <img src="${cartItem.imgSrc}"  width="100" height="160"/>
                   </div>
                   <div>
                     <h5 class="my-0" >${cartItem.titolo}</h5>
@@ -208,18 +211,22 @@
             
     
 `;
+ let iconaRimuovi=document.createElement("i");
+ iconaRimuovi.innerHTML=`<i class="bi bi-trash"></i>`;
+ iconaRimuovi.classList.add("remove");
+ iconaRimuovi.classList.add("fs-5");
+ liDiUlProdotti.appendChild(iconaRimuovi);
 
         ulProdotti.appendChild(liDiUlProdotti);
       });
 
-      
       totalprice = cartItems.reduce((acc, cartItem) => {
-            // Aggiungi il prezzo del prodotto corrente all'accumulatore
-            let totalInNumber=parseFloat(cartItem.price);
-            return acc + totalInNumber;
-          }, 0);
+        // Aggiungi il prezzo del prodotto corrente all'accumulatore
+        let totalInNumber = parseFloat(cartItem.price);
+        return acc + totalInNumber;
+      }, 0);
 
-        totalprice=totalprice.toFixed(2);
+      totalprice = totalprice.toFixed(2);
 
       let liTotaleSpesa = document.createElement("li");
       liTotaleSpesa.classList.add(
@@ -233,15 +240,22 @@
 
       let numeroProdotti = document.getElementById("n.prodotti");
       numeroProdotti.innerText = cartItems.length;
+      let total = document.getElementById("total");
 
       resetButton.addEventListener("click", function () {
         cartItems = [];
         totalprice = 0;
         numeroProdotti.innerText = 0;
-        totale.innerText = totalprice.toFixed(2) + " $"; // Aggiorna il totale nell'HTML
-
+        total.innerText = totalprice.toFixed(2) + " $"; // Aggiorna il totale nell'HTML
+        ulProdotti.innerHTML = "";
         localStorage.removeItem("cartItems");
+        if (cartIcon.classList.contains("bi-cart-check-fill")) {
+          cartIcon.classList.remove("bi-cart-check-fill");
+          cartIcon.classList.add("bi-cart-plus")
+        }
       });
+
+   
       console.log(cartItems.length);
 
       console.log(cartItems);

@@ -26,6 +26,16 @@
         height: 30px;
         background-color: #f6ee09;
       }
+
+      .card.index {
+        display: none !important;
+      }
+
+      #ADDBUTTON:hover {
+        color:white;
+        background-color: #f1b431;
+
+      }
     </style>
   </head>
   <body>
@@ -158,6 +168,7 @@
           <button
             type="button"
             class="btn rounded-4 btn-warning mt-4 addButton"
+            id="ADDBUTTON"
           >
             Aggiungi al carrello
           </button>
@@ -179,8 +190,11 @@
       src="https://kit.fontawesome.com/acd96ea700.js"
       crossorigin="anonymous"
     ></script>
+    <!--Script-->
+    <script src="script.js"></script>
     <!--Script relativo a questa pagina-->
     <script>
+      titleSection.classList.add("d-none");
       document.addEventListener("DOMContentLoaded", function () {
         const parametro = new URLSearchParams(window.location.search);
         const bookId = parametro.get("bookId");
@@ -207,12 +221,22 @@
             copertina.src = bookCover;
             let genere = document.getElementById("genere");
             genere.innerText = "Genere: " + bookGenre;
-
             // Imposta il titolo della pagina
-             document.title = bookTitle;
-          });
+            document.title = bookTitle;
+            let addButton = document.getElementById("ADDBUTTON");
+            addButton.addEventListener("click", function () {
+              let cartItem = {
+                titolo: bookTitle,
+                imgSrc: bookCover,
+                price: bookPrice + " $",
+              };
 
-         
+              cartItems.push(cartItem);
+
+              // Salva i dati aggiornati in localStorage
+              localStorage.setItem("cartItems", JSON.stringify(cartItems));
+            });
+          });
       });
     </script>
   </body>

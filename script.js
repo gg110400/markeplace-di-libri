@@ -5,8 +5,9 @@ let row = document.createElement("div");
 row.classList.add("row");
 document.body.appendChild(row); // Aggiungo la riga al corpo del documento
 
-let titleSection = document.createElement("h2"); // Creo un nuovo elemento h2 per il titolo
+let titleSection = document.createElement("h3"); // Creo un nuovo elemento h2 per il titolo
 titleSection.innerText = "Tutti i nostri prodotti";
+titleSection.classList.add("mt-3")
 
 // Aggiungo il titolo alla riga appena creata
 row.appendChild(titleSection);
@@ -39,8 +40,8 @@ fetch("https://striveschool-api.herokuapp.com/books")
       let card = document.createElement("div");
       card.classList.add("card");
       card.classList.add("mt-4");
-      card.classList.add("mb-4");
-      card.style.height = "550px";
+      card.style.marginBottom="180px";
+      card.style.height = "400px";
       card.style.width = "250px";
       card.classList.add("d-flex");
       card.classList.add("flex-column");
@@ -224,7 +225,8 @@ fetch("https://striveschool-api.herokuapp.com/books")
 
 console.log(cartItems.length);
 
-let numeroProdottiCarrello = document.getElementById("numeroProdottiCarrello");
-numeroProdottiCarrello.innerHTML= `${cartItems.length}`;
 
-let cartIcon = document.querySelectorAll(".iconaCarrello");
+
+
+
+
